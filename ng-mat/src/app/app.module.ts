@@ -25,7 +25,12 @@ import { TabComponent } from './tab/tab.component';
 import { ClipBoardComponent } from './clip-board/clip-board.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DataTableComponent } from './data-table/data-table.component'
+import { DataTableComponent } from './data-table/data-table.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list'
 
 @NgModule({
   declarations: [
@@ -35,7 +40,8 @@ import { DataTableComponent } from './data-table/data-table.component'
     ButtonComponent,
     TabComponent,
     ClipBoardComponent,
-    DataTableComponent
+    DataTableComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +60,11 @@ import { DataTableComponent } from './data-table/data-table.component'
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
