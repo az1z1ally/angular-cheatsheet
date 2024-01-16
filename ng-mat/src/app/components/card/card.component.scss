@@ -1,0 +1,18 @@
+.wrapper {
+    display: flex;
+    gap: 1rem;
+    padding: 3%;
+    flex-wrap: wrap;
+
+    .card {
+        border-radius: 0;
+        text-align: left;
+        flex: 1;
+    }
+}
+
+@media (max-width:768px ){
+    .wrapper {
+        flex-direction: column;
+    }
+}
