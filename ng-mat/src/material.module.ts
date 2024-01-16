@@ -23,6 +23,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatCardModule } from '@angular/material/card'
 
 @NgModule({
   exports: [
@@ -49,6 +50,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatToolbarModule,
     MatMenuModule,
     MatBadgeModule,
+    MatCardModule,
   ],
 })
 export class MaterialCommonModule { }
