@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DataRepresentation, TableService } from '../services/table.service';
+import { DataRepresentation, TableService } from '../../services/table.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { MatPaginator } from '@angular/material/paginator';

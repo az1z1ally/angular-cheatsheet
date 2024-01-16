@@ -1,36 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
-import {MatButtonModule} from '@angular/material/button'; 
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatDividerModule} from '@angular/material/divider';  
-import { MatTabsModule } from '@angular/material/tabs'; 
-import { ClipboardModule } from '@angular/cdk/clipboard';
-
-import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { ProgressSpinnerComponent } from './progress-spinner/progress-spinner.component';
-import { ButtonComponent } from './button/button.component';
+import { ButtonComponent } from './components/button/button.component';
 import { TabComponent } from './tab/tab.component';
-import { ClipBoardComponent } from './clip-board/clip-board.component';
-import { FormsModule } from '@angular/forms';
+import { ClipBoardComponent } from './components/autocomplete/clip-board/clip-board.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DataTableComponent } from './data-table/data-table.component';
-import { MainNavComponent } from './main-nav/main-nav.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list'
+import { DataTableComponent } from './components/data-table/data-table.component';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
+import { MaterialCommonModule } from 'src/material.module';
+import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
 
 @NgModule({
   declarations: [
@@ -41,30 +24,16 @@ import { MatListModule } from '@angular/material/list'
     TabComponent,
     ClipBoardComponent,
     DataTableComponent,
-    MainNavComponent
+    MainNavComponent,
+    AutocompleteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatDividerModule,
-    MatTabsModule,
-    ClipboardModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatFormFieldModule,
-    MatInputModule,
     FormsModule,
-    HttpClientModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule
+    MaterialCommonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
