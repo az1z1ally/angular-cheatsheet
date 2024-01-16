@@ -20,11 +20,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
-  declarations: [
-  ],
   exports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -40,14 +40,15 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete'
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
     MatAutocompleteModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatBadgeModule,
   ],
-  providers: [],
 })
 export class MaterialCommonModule { }

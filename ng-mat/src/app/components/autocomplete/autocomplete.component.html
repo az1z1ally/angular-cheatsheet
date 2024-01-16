@@ -1,20 +1,22 @@
-<div class="wrapper">
-    <h2>Auto complete</h2>
-
-    <form class="example-form">
-        <mat-form-field>
-            <mat-label>Colors</mat-label>
-            <input type="text"
-            placeholder="Select or search color..."
-            aria-label="Colors"
-            matInput
-            [formControl]="formControl"
-            [matAutocomplete]="auto">
-
-            <mat-autocomplete autoActiveFirstOption #auto>
-                <mat-option *ngFor="let color of filterOptionsList | async" [value]="color.code">{{color.code}} | {{color.name}}</mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-    </form>
-
-</div>
+<ng-container *ngIf="filterOptionsList | async as filterList">
+    <div class="wrapper">
+        <h2>Auto complete</h2>
+    
+        <form class="example-form">
+            <mat-form-field>
+                <mat-label>Colors</mat-label>
+                <input type="text"
+                placeholder="Select or search color..."
+                aria-label="Colors"
+                matInput
+                [formControl]="formControl"
+                [matAutocomplete]="auto">
+    
+                <mat-autocomplete autoActiveFirstOption #auto>
+                    <mat-option *ngFor="let color of filterList" [value]="color.code">{{color.code}} | {{color.name}}</mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    
+    </div>
+</ng-container>
