@@ -1,3 +1,14 @@
+-- Installing angular flexibly
+npx -p @angular/cli@17 ng --version   -- will throw an error since --version command does not exit
+
+-- Use
+npx -p @angular/cli17 ng version
+
+-- generate environments
+npx -p @angular/cli@16 ng generate environments
+
+
+
 --- Rest API 
 http://fakestoreapi.com/docs
 
@@ -34,3 +45,108 @@ fetch('https://fakestoreapi.com/products',{
         })
             .then(res=>res.json())
             .then(json=>console.log(json))
+
+
+
+
+
+// ACTIONS =================
+Actions are one of the main building blocks in NgRx. Actions express unique events that happen throughout your application. From user interaction with the page, external interaction through network requests, and direct interaction with device APIs, these and more events are described with actions.
+interface Action {
+    type: string;
+}
+
+// Listed below are examples of actions written as plain old JavaScript objects (POJOs):      
+      
+{
+  type: '[Auth API] Login Success'
+}
+
+    
+
+// This action describes an event triggered by a successful authentication after interacting with a backend API.
+
+      
+{
+  type: '[Login Page] Login',
+  username: string;
+  password: string;
+}
+
+
+import { createAction, props } from '@ngrx/store';
+
+export const login = createAction(
+  '[Login Page] Login',
+  props<{ username: string; password: string }>()
+);
+
+    
+// The createAction function returns a function, that when called returns an object in the shape of the Action interface. The props method is used to define any additional metadata needed for the handling of the action. 
+// Action creators provide a consistent, type-safe way to construct an action that is being dispatched.
+
+// Use the action creator to return the Action when dispatching.
+
+
+
+// The login action creator receives an object of username and password and returns a plain JavaScript object with a type property of [Login Page] Login, with username and password as additional properties.
+onSubmit(username: string, password: string) {
+    store.dispatch(login({ username: username, password: password }));
+}
+
+
+
+
+####  POSTGRES 
+https://www.postgresqltutorial.com/postgresql-administration/postgresql-reset-password/
+Reset Forgotten Password For postgres User
+
+Summary: in this tutorial, we will show you step by step how to reset the password of the postgres user in PostgreSQL.
+
+For some reason, after installing PostgreSQL, you may forget the password of the postgres user. In this case, you need to know how to reset the password to access to the PostgreSQL server.
+
+PostgreSQL uses the pg_hba.conf configuration file stored in the database data directory (e.g., C:\Program Files\PostgreSQL\12\data on Windows) to control the client authentication. The hba in pg_hba.conf means host-based authentication.
+
+To reset the password for the postgres user, you need to modify some parameters in this configuration file, login as postgres without a password, and reset the password.
+
+The following steps show you how to reset a password for the postgres user:
+
+Step 1. Backup the pg_hba.conf file by copying it to a different location or just rename it to pg_hba.conf.bk
+
+Step 2. Edit the pg_dba.conf file and change all local connections from md5 (or scram-sha-256 in a newer version) to trust. By doing this, you can log in to the PostgreSQL database server without using a password.
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            trust
+# IPv6 local connections:
+host    all             all             ::1/128                 trust
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+host    replication     all             127.0.0.1/32            trust
+host    replication     all             ::1/128                 trust
+Code language: PHP (php)
+
+Step 3. Restart the PostgreSQL server. If you are on Windows, you can restart the PostgreSQL from Services:
+
+Or run the following command from the window terminal:
+
+pg_ctl -D "C:\Program Files\PostgreSQL\12\data" restart
+Code language: JavaScript (javascript)
+
+The "C:\Program Files\PostgreSQL\12\data" is the data directory.
+
+Step 4. Connect to PostgreSQL database server using any tool such as psql or pgAdmin:
+
+psql -U postgres
+
+PostgreSQL will not require a password to login.
+
+Step 5. Execute the following command to set a new password for the postgres user.
+
+postgres=# ALTER USER postgres WITH PASSWORD 'new_password';
+Code language: SQL (Structured Query Language) (sql)
+
+Step 6. Restore the pg_dba.conf file, restart the PostgreSQL database server and connect to the PostgreSQL database server with the new password.
+
+In this tutorial, you have learned how to reset the password of the postgres user.

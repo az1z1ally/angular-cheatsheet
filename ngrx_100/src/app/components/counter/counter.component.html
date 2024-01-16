@@ -1,0 +1,9 @@
+<div class="my-3">
+    {{counter$ | async}}
+</div>
+
+<div class="my-3">
+    <button class="btn btn-primary me-3" (click)="increment()">Increment</button>
+    <button class="btn btn-danger me-3" (click)="decrement()">Decrement</button>
+    <button class="btn btn-secondary me-3" (click)="reset()">reset</button>
+</div>
