@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="mat-elevation-z8">
-    <button routerLink="" mat-icon-button>
+    <button (click)="drawer.toggle()" mat-icon-button>
         <mat-icon>menu</mat-icon>
     </button>
     <span>Material UI Hands-On</span>
@@ -35,4 +35,40 @@
         <mat-icon matBadge="5" matBadgeColor="accent" matBadgeSize="small" [matBadgeHidden]="badgeVisible">notifications</mat-icon>
     </button>
 </mat-toolbar>
+
+<!-- Mat Side Nav, you can use mat-drawer however fixedInViewport won't work as it is support only for mat-sidenav -->
+<mat-sidenav-container class="sidenav-container" autosize>
+    <mat-sidenav #drawer
+        class="sidenav"
+        position="start"
+        fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'push'"
+        [opened]="!(isHandset$ | async)"
+    >
+        <mat-nav-list>
+            <mat-list-item>
+                <button mat-button><mat-icon>dashboard</mat-icon>Dashboard</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button><mat-icon>home</mat-icon>Home</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button><mat-icon>settings</mat-icon>Settings</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button><mat-icon>help</mat-icon>Help</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button mat-button><mat-icon>analytics</mat-icon>Analytics</button>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <div style="text-align: center;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
 
