@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AutocompleteComponent } from './components/autocomplete/autocomplete.component';
-import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { HomeComponent } from './components/home/home.component';
 import { CardComponent } from './components/card/card.component';
+import { TableComponent } from './components/table/table.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'autocomplete', component: AutocompleteComponent},
-  {path: 'main-nav', component: MainNavComponent},
   {path: 'card', component: CardComponent},
+  {path: 'table', component: TableComponent},
 ];
 
 @NgModule({

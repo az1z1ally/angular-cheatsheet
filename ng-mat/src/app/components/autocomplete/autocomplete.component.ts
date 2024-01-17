@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
 import { MasterService } from 'src/app/services/master.service';
-import { Color } from 'src/app/types/colorModel';
+import { Color } from 'src/app/types/color';
 
 @Component({
   selector: 'app-autocomplete',
