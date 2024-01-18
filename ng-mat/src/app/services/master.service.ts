@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { Color } from '../types/color';
 import { Observable, delay, map, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../types/product';
-import { ProductResponse } from '../types/productResponse';
-import { RecipeResponse } from '../types/recipeResponse';
-import { Recipe } from '../types/recipe';
+import { Product, ProductResponse } from '../types/product';
+import { Recipe, RecipeResponse } from '../types/recipe';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MasterService {
+  baseUrl: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.baseUrl = 'https://dummyjson.com'
+   }
 
   getColorList(): Observable<Color[]>{
     const colors: Color[] = [
@@ -27,12 +28,12 @@ export class MasterService {
   }
 
   getProducts(): Observable<Product[]>{
-    const url = 'https://dummyjson.com/products'
+    const url = `${this.baseUrl}/products`
     return this.http.get<ProductResponse>(url).pipe(map(resp => resp.products))
   }
 
   getRecipes(): Observable<Recipe[]>{
-    const url = 'https://dummyjson.com/recipes'
+    const url = `${this.baseUrl}/recipes`
     return this.http.get<RecipeResponse>(url).pipe(map(resp => resp.recipes))
   }
 }

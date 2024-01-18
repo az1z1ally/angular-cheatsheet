@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MasterService } from 'src/app/services/master.service';
-import { Product } from 'src/app/types/product';
+import { Product, ProductWithoutImages } from 'src/app/types/product';
 
 @Component({
   selector: 'app-table',
@@ -12,8 +12,8 @@ import { Product } from 'src/app/types/product';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit{
-  products: Product[] = [];
-  dataSource!: MatTableDataSource<Product>;
+  products: ProductWithoutImages[] = [];
+  dataSource!: MatTableDataSource<ProductWithoutImages>;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -57,11 +57,7 @@ export class TableComponent implements OnInit{
     },
     {
       id: 'thumbnail',
-      value: 'Thumbanail'
-    },
-    {
-      id: 'images',
-      value: 'Images'
+      value: 'Thumbnail'
     }
   ];
  
@@ -76,7 +72,7 @@ export class TableComponent implements OnInit{
   getProducts(): void {
     this.service.getProducts().subscribe({
       next: (data: Product[]): void => {
-        this.products = data
+        this.products = this.removeImagesKey(data);
         this.dataSource = new MatTableDataSource(this.products)
         this.dataSource.sort = this.sort
         this.dataSource.paginator = this.paginator
@@ -92,6 +88,15 @@ export class TableComponent implements OnInit{
         
       }
     })
+  }
+
+  // Function to remove the 'images' key from an array of Product objects
+  removeImagesKey(products: Product[]): ProductWithoutImages[] {
+    return products.map(product => {
+        // Destructure the product object, excluding the 'images' key
+        const { images, ...productWithoutImages } = product;
+        return productWithoutImages;
+    });
   }
 
   applyFilter(event: KeyboardEvent): void{

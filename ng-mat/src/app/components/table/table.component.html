@@ -22,19 +22,29 @@
         <!-- Table -->
         <mat-table #table [dataSource]="dataSource" matSort class="mat-elevation-z4">
             <ng-container matColumnDef="{{column.id}}" *ngFor="let column of columnNames">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> {{column.value}}</mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element[column.id]}}</mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> {{column.value}}</mat-header-cell>
+                <!-- Check if the column.id is 'thumbnail' -->
+                <mat-cell *matCellDef="let element"> 
+                    <!-- If it's 'thumbnail', render an image -->
+                    <ng-container *ngIf="column.id === 'thumbnail'; else otherContent">
+                        <img [src]="element[column.id]" alt="Thumbnail" class="thumbnail">
+                    </ng-container>
+                    <!-- If it's not 'thumbnail', render the regular content -->
+                    <ng-template #otherContent>
+                        {{element[column.id]}}
+                    </ng-template>
+                </mat-cell>
             </ng-container>
           
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-
+    
             <!-- Row shown when there is no matching data. -->
             <tr class="mat-row" *matNoDataRow>
                 <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
             </tr>
         </mat-table>
-    </mat-card-content>
+    </mat-card-content>    
     <br>
 
     <mat-card-footer>
