@@ -18,6 +18,7 @@ import { MenubarComponent } from './components/menubar/menubar.component';
 import { HomeComponent } from './components/home/home.component';
 import { CardComponent } from './components/card/card.component';
 import { TableComponent } from './components/table/table.component';
+import { FormsComponent } from './components/forms/forms.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +34,15 @@ import { TableComponent } from './components/table/table.component';
     MenubarComponent,
     HomeComponent,
     CardComponent,
-    TableComponent
+    TableComponent,
+    FormsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialCommonModule,
     ReactiveFormsModule,
     HttpClientModule

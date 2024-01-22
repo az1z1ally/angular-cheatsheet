@@ -1,0 +1,63 @@
+<form [formGroup]="form" (ngSubmit)="saveCustomer()">
+    <mat-card>
+        <mat-card-content>
+            <mat-form-field class="mat-50">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" type="text">
+            </mat-form-field>
+            <mat-form-field class="mat-50">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="email">
+            </mat-form-field>
+            <mat-form-field class="mat-50">
+                <mat-label>Phone</mat-label>
+                <input matInput formControlName="phone" type="tel">
+            </mat-form-field>
+            <mat-form-field class="mat-50">
+                <mat-label>Country</mat-label>
+                <mat-select #country formControlName="country" (selectionChange)="changeCountry(country.value)">
+                    <mat-option [value]="country.name" *ngFor="let country of countryList">{{country.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="mat-50">
+                <mat-label>City</mat-label>
+                <mat-select #city formControlName="city">
+                    <mat-option [value]="city" *ngFor="let city of cities">{{city}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Address</mat-label>
+                <textarea matInput matInput formControlName="address" id="" cols="30" rows="5"></textarea>
+            </mat-form-field>
+            <mat-form-field class="mat-50">
+                <mat-label>Term</mat-label>
+                <input [matAutocomplete]="auto" matInput formControlName="term">
+                <mat-autocomplete autoActiveFirstOption #auto>
+                    <mat-option [value]="term" *ngFor="let term of termList">{{term}}</mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field class="mat-50">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" [min]="startDate" [max]="today" formControlName="dob">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-hint>dd/mm/yyyy</mat-hint>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+    
+            <div>
+                <mat-radio-group color="primary" formControlName="gender">
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="female">Female</mat-radio-button>
+                </mat-radio-group>
+                
+                <mat-checkbox color="warn" formControlName="status">Is Active</mat-checkbox>
+            </div>
+        </mat-card-content>
+        <mat-card-footer>
+            <div class="buttons">
+                <button mat-raised-button color="primary" type="submit">Save</button>
+                <button mat-raised-button color="warn" (click)="clearForm()">Clear</button>
+            </div>
+        </mat-card-footer>
+    </mat-card>    
+</form>

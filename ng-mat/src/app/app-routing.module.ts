@@ -4,12 +4,14 @@ import { AutocompleteComponent } from './components/autocomplete/autocomplete.co
 import { HomeComponent } from './components/home/home.component';
 import { CardComponent } from './components/card/card.component';
 import { TableComponent } from './components/table/table.component';
+import { FormsComponent } from './components/forms/forms.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'autocomplete', component: AutocompleteComponent},
   {path: 'card', component: CardComponent},
   {path: 'table', component: TableComponent},
+  {path: 'form', component: FormsComponent},
 ];
 
 @NgModule({
