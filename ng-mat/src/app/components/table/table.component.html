@@ -16,6 +16,8 @@
             <mat-label>Filter Table</mat-label>
             <input matInput placeholder="Enter the text" (keyup)="applyFilter($event)" #input>
         </mat-form-field>
+
+        <button class="add" mat-raised-button color="primary" (click)="addProduct()">Add Product &#40;&#43;&#41;</button>
     </mat-card-header>
 
     <mat-card-content>

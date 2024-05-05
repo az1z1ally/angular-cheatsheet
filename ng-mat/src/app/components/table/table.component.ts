@@ -1,10 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MasterService } from 'src/app/services/master.service';
 import { Product, ProductWithoutImages } from 'src/app/types/product';
+import { PopupComponent } from '../popup/popup.component';
 
 @Component({
   selector: 'app-table',
@@ -61,7 +63,10 @@ export class TableComponent implements OnInit{
     }
   ];
  
-  constructor(private service: MasterService) {
+  constructor(
+    private service: MasterService,
+    private dialog: MatDialog
+    ) {
     this.displayedColumns = this.columnNames.map(item => item.id)
   }
 
@@ -106,5 +111,33 @@ export class TableComponent implements OnInit{
     if(this.dataSource.paginator) {
       this.dataSource.paginator.firstPage()
     }
+  }
+
+
+  addProduct(): void {
+    this.openPopup(null, 'Add Product')
+  }
+
+  editProduct(id: any): void {
+    this.openPopup(id, 'Add Product')
+  }
+
+  // For Mat Dialog
+  openPopup(id?:any, title?:string): void {
+    let _popup = this.dialog.open(PopupComponent, {
+      width: '40%',
+      // height: '400px',
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+      data: {
+        id: id,
+        title: title
+      }
+    })
+
+    _popup.afterClosed().subscribe((data) => {
+      // console.log(data);
+      this.getProducts()     
+    })
   }
 }

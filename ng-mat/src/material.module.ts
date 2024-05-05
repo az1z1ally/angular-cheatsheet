@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
@@ -24,6 +23,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -31,11 +31,12 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 
 @NgModule({
   exports: [
-    BrowserModule,
     BrowserAnimationsModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
@@ -59,12 +60,14 @@ import { MatSelectModule } from '@angular/material/select';
     MatMenuModule,
     MatBadgeModule,
     MatCardModule,
+    MatSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatDialogModule
   ],
 })
 export class MaterialCommonModule { }

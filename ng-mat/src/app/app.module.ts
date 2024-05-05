@@ -19,6 +19,8 @@ import { HomeComponent } from './components/home/home.component';
 import { CardComponent } from './components/card/card.component';
 import { TableComponent } from './components/table/table.component';
 import { FormsComponent } from './components/forms/forms.component';
+import { PopupComponent } from './components/popup/popup.component';
+import { SliderComponent } from './components/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { FormsComponent } from './components/forms/forms.component';
     HomeComponent,
     CardComponent,
     TableComponent,
-    FormsComponent
+    FormsComponent,
+    PopupComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,

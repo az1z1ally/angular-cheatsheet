@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>{{inputData.title}}</h1>
+<form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input type="type" formControlName="title" matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Desc</mat-label>
+            <input type="text" formControlName="desc" matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Price</mat-label>
+            <input type="number" min="0" formControlName="price" matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Discount%</mat-label>
+            <input type="number" min="0" max="100" formControlName="discount" matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Rating</mat-label>
+            <input type="number" min="0" max="5" formControlName="rating" matInput>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions class="buttons">
+        <button type="submit" mat-raised-button color="primary">Save</button>
+        <button (click)="closePopUp()" mat-raised-button color="warn"><mat-icon>close</mat-icon> Close</button>
+        <!-- <button mat-raised-button [mat-dialog-close]="closingMessage" color="accent">Cancel</button> -->
+    </div>
+</form>

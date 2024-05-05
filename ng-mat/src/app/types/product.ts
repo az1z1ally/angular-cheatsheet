@@ -1,6 +1,7 @@
 export interface ProductWithoutImages {
-    id: string,
+    id: number,
     title: string,
+    description: string,
     price: number,
     discountPercentage: number,
     rating: number,
@@ -13,7 +14,6 @@ export interface ProductWithoutImages {
 
 export interface Product extends ProductWithoutImages {
     images: string[],
-    description: string,
 }
 
 export interface ProductResponse {

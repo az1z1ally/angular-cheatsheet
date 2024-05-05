@@ -32,6 +32,16 @@ export class MasterService {
     return this.http.get<ProductResponse>(url).pipe(map(resp => resp.products))
   }
 
+  getProductById(id: number): Observable<Product>{
+    const url = `${this.baseUrl}/products/${id}`
+    return this.http.get<Product>(url)
+  }
+
+  saveProduct(data: any): Observable<Product[]>{
+    const url = `${this.baseUrl}/products/add`
+    return this.http.post<ProductResponse>(url, data).pipe(map(resp => resp.products))
+  }
+
   getRecipes(): Observable<Recipe[]>{
     const url = `${this.baseUrl}/recipes`
     return this.http.get<RecipeResponse>(url).pipe(map(resp => resp.recipes))

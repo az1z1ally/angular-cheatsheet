@@ -1,11 +1,13 @@
+<!-- <mat-toolbar> is a container for headers, titles, or actions. -->
 <mat-toolbar color="primary" class="mat-elevation-z8">
     <button (click)="drawer.toggle()" mat-icon-button>
         <mat-icon>menu</mat-icon>
     </button>
     <span>Material UI Hands-On</span>
     <span class="spacer"></span>
+
     <button routerLink="" mat-button>Home</button>
-    <button [matMenuTriggerFor]="lvl1master" mat-button>Master</button>
+    <button [matMenuTriggerFor]="lvl1master" mat-button>About</button>
     <mat-menu #lvl1master>
         <button [matMenuTriggerFor]="company" mat-menu-item>Company</button>
         <button [matMenuTriggerFor]="customer" mat-menu-item>Customer</button>
@@ -25,15 +27,35 @@
 
     <mat-menu #product>
         <button mat-menu-item>Category</button>
-        <button mat-menu-item>Variant</button>
+        <button [matMenuTriggerFor]="variant" mat-menu-item>Variant</button>
         <button mat-menu-item>UOM</button>
     </mat-menu>
+
+    <mat-menu #variant>
+        <button mat-menu-item>Color</button>
+        <button mat-menu-item>Size</button>
+    </mat-menu>
     <button routerLink="form" mat-button>Forms</button>
+    <button routerLink="table" mat-button>Data Table</button>
     <button routerLink="autocomplete" mat-button>Autocomplete</button>
     <button mat-raised-button color="accent">Sign Up</button>
-    <button (click)="badgeVisibility()" mat-icon-button>
+    <button [matMenuTriggerFor]="menu" (click)="badgeVisibility()" mat-icon-button>
         <mat-icon matBadge="5" matBadgeColor="accent" matBadgeSize="small" [matBadgeHidden]="badgeVisible" aria-hidden="false">notifications</mat-icon>
     </button>
+    <mat-menu #menu>
+        <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Redial</span>
+        </button>
+        <button mat-menu-item disabled>
+            <mat-icon>voicemail</mat-icon>
+            <span>Check voicemail</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+        </button>
+    </mat-menu>
 </mat-toolbar>
 
 <!-- You can use mat-drawer instead of mat-sidenav however fixedInViewport directive won't work as it supported only for mat-sidenav -->
@@ -51,7 +73,7 @@
                 <button routerLink="card" mat-button><mat-icon>dashboard</mat-icon>Dashboard</button>
             </mat-list-item>
             <mat-list-item>
-                <button mat-button><mat-icon>home</mat-icon>Home</button>
+                <button mat-button routerLink="home"><mat-icon>home</mat-icon>Home</button>
             </mat-list-item>
             <mat-list-item>
                 <button mat-button><mat-icon>settings</mat-icon>Settings</button>
@@ -62,14 +84,95 @@
             <mat-list-item>
                 <button mat-button><mat-icon>analytics</mat-icon>Analytics</button>
             </mat-list-item>
+            <!-- <a mat-list-item href="#"><mat-icon>bookmark</mat-icon>Bookmarks</a> -->
         </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <div style="text-align: center;">
+        <div class="wrapper">
             <router-outlet></router-outlet>
         </div>
         <ng-content></ng-content>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+<!-- 
+<mat-icon>icon-name</mat-icon>  -- some icons name ref
+home
+menu
+favorite
+share
+thumb_up
+thum_down
+save
+book
+bookmark
+close
+description
+more
+more_vert
+dashboard
+settings
+help
+analytics
+credit_card
+date_range
+contact_support
+copyright
+compare_arrows
+commute
+class
+map
+delete
+delete_forever
+delete_outline
+done
+done_all
+done_outline
+sms
+sms_failed
+notifications
+notifications_off
+sync
+sync_disabled
+priority_high
+power
+power_off
+phone
+phone_paused
+phone_missed
+phone_in_talk
+arrow_forward
+arrow_downward
+arrow_drop_up
+arrow_drop_down
+arrow_dropdown_circle
+arrow_back
+arrow_back_ios
+apps
+dial_pad
+sd_card
+vibration
+system_update
+time_to_live
+tv_off
+voice_chat
+tap_and_play
+vpn_lock
+info
+language
+lock
+lock_open
+list
+launch
+open_in_new
+open_in_browser
+minimize
+language
+highlight_off
+grade
+get_app
+offline
+offline_pin
+ -->
 
