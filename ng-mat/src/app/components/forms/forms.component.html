@@ -27,11 +27,11 @@
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Address</mat-label>
-                <textarea matInput matInput formControlName="address" id="" cols="30" rows="5"></textarea>
+                <textarea matInput formControlName="address" cols="30" rows="5"></textarea>
             </mat-form-field>
             <mat-form-field class="mat-50">
                 <mat-label>Term</mat-label>
-                <input [matAutocomplete]="auto" matInput formControlName="term">
+                <input matInput [matAutocomplete]="auto" formControlName="term">
                 <mat-autocomplete autoActiveFirstOption #auto>
                     <mat-option [value]="term" *ngFor="let term of termList">{{term}}</mat-option>
                 </mat-autocomplete>
@@ -40,7 +40,7 @@
                 <mat-label>Date of Birth</mat-label>
                 <input matInput [matDatepicker]="picker" [min]="startDate" [max]="today" formControlName="dob">
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-hint>dd/mm/yyyy</mat-hint>
+                <mat-hint>mm/dd/yyyy</mat-hint>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
     

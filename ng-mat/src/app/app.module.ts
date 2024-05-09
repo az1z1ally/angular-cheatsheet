@@ -21,6 +21,7 @@ import { TableComponent } from './components/table/table.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { QuizFormComponent } from './components/quiz-form/quiz-form.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SliderComponent } from './components/slider/slider.component';
     TableComponent,
     FormsComponent,
     PopupComponent,
-    SliderComponent
+    SliderComponent,
+    QuizFormComponent
   ],
   imports: [
     BrowserModule,

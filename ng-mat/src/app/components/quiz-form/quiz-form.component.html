@@ -1,0 +1,38 @@
+<form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+  <h1>Quiz Form</h1>
+  <div formArrayName="questions">
+    @for (question of quizForm.controls.questions.controls; track questionIndex;
+      let questionIndex = $index) {
+      <div class="question" [formGroupName]="questionIndex">
+        <input type="text" formControlName="questionName" placeholder="Question Name">
+      </div>  
+    }
+  </div>
+</form>
+
+<!-- 
+The @for block in Angular is used to repeat an element in the DOM for each item in a collection
+
+How the syntax work:
+@for (item of items; track item) {
+  #-- Content to be repeated 
+}
+
+item: Represents the current item in the iteration.
+items: Refers to the collection or iterable to be iterated over (e.g., an array, string, etc.).
+track: Denotes the identity to pass to each element.
+The track expression is crucial because it provides a unique identity for each item. Angular uses this identity to optimize DOM operations when items are added, removed, or reordered. For simple cases, you can use track $index as a reasonable default12.
+
+Additionally, inside the @for contents, several implicit variables are available:
+
+$count: Number of items in the collection.
+$index: Index of the current row.
+$first: Indicates whether the current row is the first row.
+$last: Indicates whether the current row is the last row.
+$even: Indicates whether the current row index is even.
+$odd: Indicates whether the current row index is odd.
+You can also alias these variables using the let segment, especially when dealing with nested @for blocks where contextual variable names could collide1. For example:
+
+@for (item of items; track item.id; let idx = $index, e = $even) {
+  Item #{{ idx }}: {{ item.name }}
+} -->

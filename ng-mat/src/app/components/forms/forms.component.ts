@@ -1,22 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-
-export interface Country {
-  name: string,
-  cities: string[]
-}
+import { Country } from './types/country.interface';
 
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.scss']
 })
-export class FormsComponent implements OnInit{
-  today: Date = new Date();
-  startDate: Date = new Date(1970,0,1);
- 
-  termList: Array<string> =['15days', '30days', '45days', '65days']
-
+export class FormsComponent implements OnInit {
   countryList: Array<Country> = [
     {name: 'Tanzania', cities: ['DSM', 'ZNZ', 'Tanga', 'Morogoro', 'Dodoma']},
     { name: 'Germany', cities: ['Duesseldorf', 'Leinfelden-Echterdingen', 'Eschborn'] },
@@ -27,6 +18,9 @@ export class FormsComponent implements OnInit{
   ];
 
   cities: Array<string> = [];
+  termList: Array<string> =['15days', '30days', '45days', '65days']
+  today: Date = new Date();
+  startDate: Date = new Date(1970,0,1);
 
   form = this.fb.group({
     name: this.fb.control('', Validators.required),
@@ -49,6 +43,11 @@ export class FormsComponent implements OnInit{
     this.form.setValue({
       name:'Aaaaaa', email: 'a@a.com', phone: '0700110011', country: 'Tanzania',city: null, address: 'Address', term: '15days', dob: new Date(1970,0,1), gender: 'male', status: true
     })
+
+    const currentCountryValue = this.form.get('country')?.value
+    if(currentCountryValue) {
+      this.changeCountry(currentCountryValue)
+    }
   }
 
   changeCountry(name: string): string[]{

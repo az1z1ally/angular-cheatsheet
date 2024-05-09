@@ -5,7 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MasterService } from 'src/app/services/master.service';
-import { Product, ProductWithoutImages } from 'src/app/types/product';
+import { Product, ProductWithoutAllFields } from 'src/app/types/product';
 import { PopupComponent } from '../popup/popup.component';
 
 @Component({
@@ -14,8 +14,8 @@ import { PopupComponent } from '../popup/popup.component';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit{
-  products: ProductWithoutImages[] = [];
-  dataSource!: MatTableDataSource<ProductWithoutImages>;
+  products: ProductWithoutAllFields[] = [];
+  dataSource!: MatTableDataSource<ProductWithoutAllFields>;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -29,10 +29,10 @@ export class TableComponent implements OnInit{
       id: 'title',
       value: 'Title',
     },
-    {
-      id: 'description',
-      value: 'Desc',
-    },
+    // {
+    //   id: 'description',
+    //   value: 'Desc',
+    // },
     {
       id: 'price',
       value: 'Price',
@@ -96,11 +96,11 @@ export class TableComponent implements OnInit{
   }
 
   // Function to remove the 'images' key from an array of Product objects
-  removeImagesKey(products: Product[]): ProductWithoutImages[] {
+  removeImagesKey(products: Product[]): ProductWithoutAllFields[] {
     return products.map(product => {
         // Destructure the product object, excluding the 'images' key
-        const { images, ...productWithoutImages } = product;
-        return productWithoutImages;
+        const { images, description, ...productWithoutAllFields } = product;
+        return productWithoutAllFields;
     });
   }
 
@@ -119,7 +119,7 @@ export class TableComponent implements OnInit{
   }
 
   editProduct(id: any): void {
-    this.openPopup(id, 'Add Product')
+    this.openPopup(id, 'Update Product')
   }
 
   // For Mat Dialog
@@ -129,6 +129,7 @@ export class TableComponent implements OnInit{
       // height: '400px',
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',
+      // position:{right: '0', bottom: '0'},
       data: {
         id: id,
         title: title

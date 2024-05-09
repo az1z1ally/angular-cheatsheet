@@ -7,6 +7,7 @@ import { TableComponent } from './components/table/table.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { SliderComponent } from './components/slider/slider.component';
+import { QuizFormComponent } from './components/quiz-form/quiz-form.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'table', component: TableComponent},
   {path: 'form', component: FormsComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'old-nav', component: MainNavComponent}
+  {path: 'old-nav', component: MainNavComponent},
+  {path: 'dynamic-form', component: QuizFormComponent}
 ];
 
 @NgModule({
