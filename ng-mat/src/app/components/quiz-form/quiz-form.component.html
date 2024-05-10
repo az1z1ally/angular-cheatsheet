@@ -1,14 +1,55 @@
 <form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
-  <h1>Quiz Form</h1>
-  <div formArrayName="questions">
-    @for (question of quizForm.controls.questions.controls; track questionIndex;
-      let questionIndex = $index) {
-      <div class="question" [formGroupName]="questionIndex">
-        <input type="text" formControlName="questionName" placeholder="Question Name">
-      </div>  
-    }
-  </div>
+  <mat-card>
+    <mat-card-header>
+      <h1>Quiz Form</h1>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Rendering array(list) of answers -->
+      <div formArrayName="questions" class="questions">
+        @for (question of quizForm.controls.questions.controls; track questionIndex;
+          let questionIndex = $index
+        ) {
+          <!-- Render every single question -->
+          <div class="question" [formGroupName]="questionIndex">
+            <mat-form-field>
+              <input matInput type="text" formControlName="questionName" placeholder="Question Name">
+              <!-- <textarea matInput formControlName="questionName" cols="30" rows="4" placeholder="Question Name"></textarea> -->
+            </mat-form-field>
+            <button mat-icon-button color="warn" (click)="removeQuestion(questionIndex)"><mat-icon>close</mat-icon></button>
+
+            <!-- Rendering answers inside a question -->
+            <div formArrayName="answers" class="answers">
+              <div>Answers:</div>
+              <!-- @for (answer of quizForm.controls.questions.controls.at(questionIndex)?.controls?.answers?.controls; track $index) {} -->
+              @for (answer of question.controls.answers.controls; track answerIndex;
+                let answerIndex = $index
+              ) {
+                <!-- Render every single answer -->
+                <div class="answer" [formGroupName]="answerIndex">
+                  <mat-form-field>
+                    <input matInput formControlName="text" placeholder="Answer">
+                  </mat-form-field>
+
+                  <button mat-icon-button color="warn" (click)="removeAnswer(answerIndex, questionIndex)"><mat-icon>close</mat-icon></button>
+                </div>
+              }
+
+              <button mat-flat-button type="button" class="add-answer" (click)="addAnswer(questionIndex)">Add Answer &#40;&#43;&#41;</button>
+            </div>
+          </div>  
+        }
+
+        <div class="add-question">
+          <button type="button" (click)="addQuestion()">Add Question</button>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
 </form>
+
 
 <!-- 
 The @for block in Angular is used to repeat an element in the DOM for each item in a collection
@@ -31,8 +72,9 @@ $first: Indicates whether the current row is the first row.
 $last: Indicates whether the current row is the last row.
 $even: Indicates whether the current row index is even.
 $odd: Indicates whether the current row index is odd.
-You can also alias these variables using the let segment, especially when dealing with nested @for blocks where contextual variable names could collide1. For example:
+You can also alias these variables using the let segment, especially when dealing with nested @for blocks where contextual variable names could collide.
 
+1. For example:
 @for (item of items; track item.id; let idx = $index, e = $even) {
   Item #{{ idx }}: {{ item.name }}
 } -->

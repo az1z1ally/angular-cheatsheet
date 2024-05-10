@@ -10,4 +10,4 @@ eg. upgrading to angular 17
 
 -- You can include all the items tu update in a single ng update i.e `$ @angular/cdk @angular/core @nagular/cli --force`
 
-#### - most of the time runing ng update @angular/cdk --force will update most dependency in package.json then you can follow with ng update @angular/cli@17. Feel free to check the angular upgrade guid for your version.
+#### - most of the time runing ng update @angular/cdk --force will update most dependency in package.json then you can follow with ng update @angular/cli@17. Feel free to check the angular upgrade guide for your specific version.
