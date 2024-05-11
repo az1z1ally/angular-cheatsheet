@@ -4,7 +4,7 @@
       <h1>Quiz Form</h1>
     </mat-card-header>
     <mat-card-content>
-      <!-- Rendering array(list) of answers -->
+      <!-- Rendering array(list) of questions -->
       <div formArrayName="questions" class="questions">
         @for (question of quizForm.controls.questions.controls; track questionIndex;
           let questionIndex = $index
@@ -40,7 +40,7 @@
         }
 
         <div class="add-question">
-          <button type="button" (click)="addQuestion()">Add Question</button>
+          <button mat-flat-button color="basic" type="button" (click)="addQuestion()">Add Question &#40;&#43;&#41;</button>
         </div>
       </div>
     </mat-card-content>
